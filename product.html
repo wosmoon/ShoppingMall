@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>乐淘二级分类</title>
+    <link rel="stylesheet" href="./lib/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="./lib/nprogress/nprogress.css">
+    <link rel="stylesheet" href="./lib/bootstrap-validator/css/bootstrapValidator.css">
+    <link rel="stylesheet" href="css/common.css">
+</head>
+
+<!-- 侧边栏 -->
+<div class="It_aside">
+    <!-- 标题部分 -->
+    <div class="brand">
+        <a href="index.html">小王敲代码</a>
+    </div>
+    <!-- 用户信息部分 -->
+    <div class="user">
+        <img src="images/default.png" alt="">
+        <p>超级管理员</p>
+    </div>
+    <!-- 导航部分 -->
+    <div class="nav">
+        <ul>
+            <li>
+                <a href="user.html">
+                    <i class="glyphicon glyphicon-user"></i>
+                    <span>用户管理</span>
+                </a>
+            </li>
+            <li>
+                <a href="javascript:;" class="category">
+                    <i class="glyphicon glyphicon-th-list"></i>
+                    <span>分类管理</span>
+                </a>
+                <div class="child" style="display: none;">
+                    <a href="first.html">一级分类</a>
+                    <a href="second.html">二级分类</a>
+                </div>
+            </li>
+            <li>
+                <a href="product.html" class="current">
+                    <i class="glyphicon glyphicon-tag"></i>
+                    <span>商品管理</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+</div>
+
+<!-- 右边区域 -->
+<div class="It_main">
+    <!-- 上部份区域 -->
+    <div class="It_topbar">
+        <a href="#" class="pull-left icon_menu">
+            <i class="glyphicon glyphicon-align-justify"></i>
+        </a>
+        <a href="#" class="pull-right icon_logout">
+            <i class="glyphicon glyphicon-log-out"></i>
+        </a>
+    </div>
+    <!-- 主题区域 -->
+    <div class="container-fluid">
+        <!-- 路径导航 -->
+        <ol class="breadcrumb">
+            <li>
+                <a href="index.html">管理系统</a>
+            </li>
+            <li class="active">商品管理</li>
+        </ol>
+
+        <!-- 主题内容区域 -->
+        <div class="content">
+            <!-- 添加分类按钮 -->
+            <button href="javascript:;" class="btn btn-default mb_15 addproduct" role="button">添加商品</button>
+            <!-- 表格区域 -->
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <!-- 序号	商品名称	商品描述	商品库存	商品尺寸	商品状态	操作 -->
+                    <tr>
+                        <th width="10%">序号</th>
+                        <th width="25%">商品名称</th>
+                        <th width="25%">商品描述</th>
+                        <th width="10%">商品库存</th>
+                        <th width="10%">商品尺寸</th>
+                        <th width="10%">商品状态</th>
+                        <th width="10%">操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- 挖坑 -->
+                    <!-- 1	【莹恋】MIZUNO美津浓V1GA159002乒乓球鞋男鞋女鞋室内综合训练鞋	描述123123	44	35-56	已上架	 -->
+
+                    <!-- <td>1</td>
+                    <td>【莹恋】MIZUNO美津浓V1GA159002乒乓球鞋男鞋女鞋室内综合训练鞋</td>
+                    <td>描述123123</td>
+                    <td>44</td>
+                    <td>35-56</td>
+                    <td>已上架</td>
+                    <td>
+                        <button class="btn btn-danger">下架</button>
+                    </td> -->
+                </tbody>
+            </table>
+
+            <!-- 分页区域 -->
+            <nav class="pull-right">
+                <ul class="pagination">
+                </ul>
+            </nav>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+<!-- 确认退出模态框部分 -->
+<div class="modal fade " id="logoutModal">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">温馨提示</h4>
+            </div>
+            <div class="modal-body">
+                <p class="red">
+                    <i class="glyphicon glyphicon-info-sign"></i>您真的要退出吗?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary" id="logoutBtn">退出</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- 添加商品模态框 -->
+<div class="modal fade " id="addModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">添加商品</h4>
+            </div>
+            <div class="modal-body">
+                <!-- 一个form用于表单提交 -->
+                <form id="form">
+
+                    <!-- 1.下拉菜单 -->
+                    <div class="form-group">
+                        <div class="dropdown">
+                            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="true">
+                                <span id="choosesec">请选择二级分类</span>
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                <!-- 坑 -->
+                            </ul>
+                        </div>
+                        <input type="hidden" name="brandId">
+                    </div>
+                    <!-- 2.输入商品名称 -->
+                    <div class="form-group">
+                        <input type="none" class="form-control" name="proName" placeholder="输入商品名称">
+                    </div>
+
+                    <!-- 2.输入商品描述 -->
+                    <div class="form-group">
+                        <textarea name="proDesc" class="form-control" cols="30" rows="5" placeholder="请输入商品描述"></textarea>
+                    </div>
+
+                    <!-- 请输入商品库存 -->
+                    <div class="form-group">
+                        <input type="none" class="form-control" name="num" placeholder="输入商品库存">
+                    </div>
+
+                    <!-- 请输入商品尺码 -->
+                    <div class="form-group">
+                        <input type="none" class="form-control" name="size" placeholder="输入商品尺码">
+                    </div>
+
+                    <!-- 请输入商品原价 -->
+                    <div class="form-group">
+                        <input type="none" class="form-control" name="oldPrice" placeholder="输入商品原价">
+                    </div>
+
+                    <!-- 请输入商品现价 -->
+                    <div class="form-group">
+                        <input type="none" class="form-control" name="price" placeholder="输入商品现价">
+                    </div>
+
+                    <!-- 选择图片按钮 -->
+                    <div class="form-group">
+                        <label for="fileupload" href="#" class="btn btn-default">上传图片</label>
+                        <input style="display: none;" type="file" id="fileupload" name="pic1" data-url="/product/addProductPic" multiple>
+                    </div>
+
+                    <!-- 4.上传后图片显示 -->
+                    <div class="form-group img-box">
+                        <!-- <img src="./images/none.png" style="width: 100px" alt=""> -->
+                        <input type="hidden" name="picStatus">
+                    </div>
+                    <!-- 5.是否上架 -->
+                    <input name="statu" value="1" type="hidden">
+                </form>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="submit" class="btn btn-primary" form="form">添加</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+<!-- 页面数据初始化模板引擎区域 -->
+<script type="text/html" id="tpl">
+    {{ each rows v i }}
+    <tr>
+        <td>{{(page-1)*size+i+1}}</td>
+        <td>{{v.proName}}</td>
+        <td>{{v.proDesc}}</td>
+        <td>{{v.num}}</td>
+        <td>{{v.size}}</td>
+        <td>{{v.statu===1 ? "已上架":"已下架"}}</td>
+        <td>
+            {{if v.statu === 1}}
+            <button class="btn btn-danger">下架</button>
+            {{else}}
+            <button class="btn btn-success">上架</button>
+            {{/if}}
+        </td>
+    </tr>
+    {{/each}}
+</script>
+
+<!-- 一级分类模板 -->
+<script type="text/html" id="sectpl">
+    {{ each rows v i}}
+    <li data-id="{{v.id}}">
+        <a href="#">{{v.brandName}}</a>
+    </li>
+    {{/each}}
+</script>
+
+
+
+<script src="./lib/jquery/jquery.min.js"></script>
+<script src="./lib/bootstrap/js/bootstrap.min.js"></script>
+<script src="./lib/nprogress/nprogress.js"></script>
+<script src="./lib/bootstrap-validator/js/bootstrapValidator.min.js"></script>
+<script src="./lib/artTemplate/template-web.js"></script>
+<script src="./lib/bootstrap-paginator/bootstrap-paginator.min.js"></script>
+<script src="./lib/jquery-fileupload/jquery.ui.widget.js"></script>
+<script src="./lib/jquery-fileupload/jquery.fileupload.js"></script>
+<script src="js/common.js"></script>
+<script src="js/product.js"></script>
+</body>
+
+</html>
